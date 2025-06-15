@@ -1,49 +1,44 @@
-// script.js 
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Select DOM elements exactly as specified
     const addButton = document.getElementById('add-task-btn');
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
 
-    // 2. Define addTask function exactly as specified
     function addTask() {
-        // 2a. Retrieve and trim input value
         const taskText = taskInput.value.trim();
         
-        // 2b. Check for empty string exactly
         if (taskText === "") {
             alert("Please enter a task!");
             return;
         }
         
-        // 3. Task creation exactly as specified
+        // Create new list item and set its text
         const listItem = document.createElement('li');
-        listItem.textContent = taskText;  // Must use textContent directly
+        listItem.textContent = taskText;
         
-        // 3a. Remove button creation exactly as specified
+        // Create remove button with exact specifications
         const removeButton = document.createElement('button');
-        removeButton.textContent = "Remove";  // Exact text
-        removeButton.className = "remove-btn";  // Exact class name
+        removeButton.textContent = "Remove";
+        removeButton.className = "remove-btn";
         
-        // 3b. Remove functionality exactly as specified
+        // Add removal functionality
         removeButton.onclick = function() {
-            taskList.removeChild(listItem);  // Must use removeChild
+            taskList.removeChild(listItem);
         };
         
-        // 3c. Append elements in exact order
+        // Append elements in exact specified order
         listItem.appendChild(removeButton);
         taskList.appendChild(listItem);
         
-        // 3d. Clear input exactly
+        // Clear input field
         taskInput.value = "";
     }
 
-    // 4. Event listeners exactly as specified
-    addButton.addEventListener('click', addTask);  // Simple callback
+    // Add button click event listener
+    addButton.addEventListener('click', addTask);
     
-    // 4a. Enter key listener exactly as specified
+    // Add Enter key event listener
     taskInput.addEventListener('keypress', function(event) {
-        if (event.key === "Enter") {  // Must check exact key
+        if (event.key === "Enter") {
             addTask();
         }
     });
