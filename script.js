@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         const li = document.createElement('li');
-        li.textContent = taskText;
+        li.appendChild(document.createTextNode(taskText)); // Use text node, not textContent
 
         const removeButton = document.createElement('button');
         removeButton.textContent = "Remove";
         removeButton.className = 'remove-btn';
 
         removeButton.onclick = function () {
-            taskList.removeChild(li);
+            li.remove(); // Use .remove() instead of taskList.removeChild(li)
         };
 
         li.appendChild(removeButton);
@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Attach event listener to Add Task button
     addButton.addEventListener('click', addTask);
 
-    // Attach event listener to input for Enter key
-    taskInput.addEventListener('keypress', function (event) {
+    // Use keydown instead of keypress
+    taskInput.addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
             addTask();
         }
