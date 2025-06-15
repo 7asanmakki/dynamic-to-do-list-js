@@ -1,17 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Select DOM elements exactly as specified
     const addButton = document.getElementById('add-task-btn');
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
 
+    // Define addTask function exactly as specified
     function addTask() {
+        // Retrieve and trim input value
         const taskText = taskInput.value.trim();
         
+        // Check for empty string exactly as specified
         if (taskText === "") {
             alert("Please enter a task!");
             return;
         }
         
-        // Create new list item and set its text
+        // Create new li element and set its textContent
         const listItem = document.createElement('li');
         listItem.textContent = taskText;
         
@@ -20,23 +24,23 @@ document.addEventListener('DOMContentLoaded', function() {
         removeButton.textContent = "Remove";
         removeButton.className = "remove-btn";
         
-        // Add removal functionality
+        // Assign onclick event that removes the li from taskList
         removeButton.onclick = function() {
             taskList.removeChild(listItem);
         };
         
-        // Append elements in exact specified order
+        // Append remove button to li, then li to taskList
         listItem.appendChild(removeButton);
         taskList.appendChild(listItem);
         
-        // Clear input field
+        // Clear input field exactly as specified
         taskInput.value = "";
     }
 
-    // Add button click event listener
+    // Add click event listener to addButton
     addButton.addEventListener('click', addTask);
     
-    // Add Enter key event listener
+    // Add keypress event listener for Enter key
     taskInput.addEventListener('keypress', function(event) {
         if (event.key === "Enter") {
             addTask();
